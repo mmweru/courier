@@ -3,6 +3,10 @@ import axios from 'axios';
 import { Package, Truck, Clock, User, ChevronRight, Search } from './CustomIcons';
 import { useAuth } from './context/AuthContext';
 
+const API_BASE_URL = process.env.NODE_ENV === 'production'
+  ? 'https://wcs-zbx2.onrender.com'
+  : 'http://localhost:7001'; // For local development
+
 const UserDashboard = () => {
   const { user, loading } = useAuth();
   const [hoveredCard, setHoveredCard] = useState(null);
@@ -40,7 +44,7 @@ const UserDashboard = () => {
 
   const fetchUserOrders = async () => {
     try {
-      const response = await axios.get(`http://localhost:7001/api/orders/user/${user.email}`, {
+      const response = await axios.get(`${API_BASE_URL}/api/orders/user/${user.email}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
       const userOrders = response.data;

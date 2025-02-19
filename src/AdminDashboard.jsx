@@ -5,6 +5,10 @@ import emailjs from '@emailjs/browser';
 import { useAuth } from './context/AuthContext';
 import './AdminDashboard.css';
 
+const API_BASE_URL = process.env.NODE_ENV === 'production'
+  ? 'https://wcs-zbx2.onrender.com'
+  : 'http://localhost:7001'; // For local development
+
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [showAddService, setShowAddService] = useState(false);
@@ -42,7 +46,7 @@ const AdminDashboard = () => {
   // Fetch users
   const fetchUsers = useCallback(async () => {
     try {
-      const response = await axios.get('http://localhost:7001/api/users', {
+      const response = await axios.get(`${API_BASE_URL}/api/users`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
@@ -58,7 +62,7 @@ const AdminDashboard = () => {
   // Fetch orders
   const fetchOrders = useCallback(async () => {
     try {
-      const response = await axios.get('http://localhost:7001/api/orders', {
+      const response = await axios.get(`${API_BASE_URL}/api/orders`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
@@ -127,13 +131,13 @@ const AdminDashboard = () => {
   const handleStatusToggle = async (userId, currentStatus) => {
     try {
       const newStatus = currentStatus === 'Active' ? 'Inactive' : 'Active';
-      await axios.patch(`http://localhost:7001/api/users/${userId}/status`, {
+      await axios.patch(`${API_BASE_URL}/api/users/${userId}/status`, {
         status: newStatus
       }, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
-      });
+    });
     } catch (err) {
       setError('Failed to update user status');
     }
@@ -143,7 +147,7 @@ const AdminDashboard = () => {
   const handleDeleteUser = async (userId) => {
     if (window.confirm('Are you sure you want to delete this user?')) {
       try {
-        await axios.delete(`http://localhost:7001/api/users/${userId}`, {
+        await axios.delete(`${API_BASE_URL}/api/users/${userId}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -158,11 +162,11 @@ const AdminDashboard = () => {
   const handleDeleteOrder = async (orderId) => {
     if (window.confirm('Are you sure you want to delete this order?')) {
       try {
-        await axios.delete(`http://localhost:7001/api/orders/${orderId}`, {
+        await axios.delete(`${API_BASE_URL}/api/orders/${orderId}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
-        });
+        });        
         // Remove from local state
         setOrders(prevOrders => prevOrders.filter(order => order.id !== orderId));
       } catch (err) {
@@ -176,13 +180,13 @@ const AdminDashboard = () => {
     if (!editingOrder || !editingOrder.newStatus) return;
     
     try {
-      await axios.patch(`http://localhost:7001/api/orders/${editingOrder.id}/status`, {
+      await axios.patch(`${API_BASE_URL}/api/orders/${editingOrder.id}/status`, {
         status: editingOrder.newStatus
       }, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
-      });
+      });      
       
       // Update local state
       setOrders(prevOrders => 
@@ -238,7 +242,7 @@ const AdminDashboard = () => {
       };
   
       // Send to server
-      const response = await axios.post('http://localhost:7001/api/orders', orderData, {
+      const response = await axios.post(`${API_BASE_URL}/api/orders`, orderData, {
         headers: { 
           Authorization: `Bearer ${localStorage.getItem('token')}`,
           'Content-Type': 'application/json'
@@ -293,7 +297,7 @@ const startPaymentStatusCheck = async (checkoutRequestId, orderId) => {
   
   const checkStatus = async () => {
     try {
-      const response = await axios.post('http://localhost:7001/api/mpesa/status', {
+      const response = await axios.post(`${API_BASE_URL}/api/mpesa/status`, {
         checkoutRequestId
       }, {
         headers: { 
@@ -301,6 +305,7 @@ const startPaymentStatusCheck = async (checkoutRequestId, orderId) => {
           'Content-Type': 'application/json'
         }
       });
+      
       
       // If payment completed successfully
       if (response.data.success && response.data.data.ResultCode === 0) {
@@ -510,7 +515,7 @@ const renderOrdersSection = () => (
                     onClick={async () => {
                       try {
                         if (window.confirm(`Resend STK push to ${order.mpesaNumber}?`)) {
-                          const response = await axios.post('http://localhost:7001/api/mpesa/stkpush', {
+                          const response = await axios.post(`${API_BASE_URL}/api/mpesa/stkpush`, {
                             phoneNumber: order.mpesaNumber,
                             amount: order.amount,
                             orderId: order.id
