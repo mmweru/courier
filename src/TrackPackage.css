@@ -1,0 +1,81 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .track-package-container {
+    height: 80vh;
+    background: linear-gradient(135deg, #000428, #0978d8, #021a3b);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    animation: fadeIn 1.5s ease-in-out;
+    padding-bottom: 30px;
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .title {
+    font-size: 3rem;
+    font-weight: bold;
+    text-shadow: 0 0 10px #00c6ff, 0 0 20px #00c6ff;
+    margin-bottom: 20px;
+  }
+  
+  .tracking-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .tracking-input {
+    width: 300px;
+    padding: 15px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    box-shadow: 0 0 15px #00c6ff;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .tracking-input:focus {
+    background: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 25px #00c6ff;
+  }
+  
+  .track-button {
+    padding: 10px 30px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 25px;
+    background: #00c6ff;
+    color: black;
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+  }
+  
+  .track-button:hover {
+    background: #0088cc;
+    transform: scale(1.1);
+  }
+  
+  .track-button:active {
+    transform: scale(0.9);
+  }
+  

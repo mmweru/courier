@@ -1,0 +1,41 @@
+/* Responsive Grid Layout */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+  
+  /* Responsive Typography */
+  html {
+    font-size: 16px;
+  }
+  
+  @media (max-width: 768px) {
+    html {
+      font-size: 14px;
+    }
+  }
+  
+  /* Responsive Tables */
+  .table-responsive {
+    overflow-x: auto;
+  }
+  
+  /* Responsive Modals */
+  .modal-content {
+    width: 90%;
+    max-width: 600px;
+    margin: 1rem auto;
+  }
+  
+  /* Responsive Navigation */
+  .nav-responsive {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  @media (min-width: 768px) {
+    .nav-responsive {
+      flex-direction: row;
+    }
+  }

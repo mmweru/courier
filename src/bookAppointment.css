@@ -1,0 +1,71 @@
+/* Add Jacques Francois font */
+@import url('https://fonts.googleapis.com/css2?family=Jacques+Francois&display=swap');
+
+/* Use the font throughout the page */
+.font-jacques {
+  font-family: 'Jacques Francois', cursive;
+}
+
+/* Gradient Background for the booking page */
+.bg-gradient-to-r {
+  background: linear-gradient(45deg, rgba(0, 0, 0, 1) 0%, rgba(21, 101, 192, 0.9) 50%, rgba(0, 0, 139, 0.8) 100%);
+}
+
+/* Container styling */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Form inputs and button */
+input, select, button {
+  width: 100%;
+  padding: 12px 20px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: none;
+  background-color: #2d3748;
+  color: white;
+  font-size: 16px;
+}
+
+/* Focused inputs */
+input:focus, select:focus {
+  outline: none;
+  border-color: #38b2ac;
+  box-shadow: 0 0 5px rgba(56, 178, 172, 0.5);
+}
+
+/* Button styling */
+button {
+  background-color: #4C8BF5;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #2b5bbf;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Animation classes */
+.animate__fadeIn {
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.animate__delay-1s {
+  animation-delay: 1s;
+}

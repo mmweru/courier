@@ -1,0 +1,321 @@
+/* Add Jacques Francois font */
+@import url('https://fonts.googleapis.com/css2?family=Jacques+Francois&display=swap');
+
+/* Use the font throughout the page */
+.font-jacques {
+  font-family: 'Jacques Francois', cursive;
+}
+
+/* Neon Line Under Menu Items */
+.group:hover .bg-neon-line {
+  width: 20%;
+  transition: width 0.3s ease-in-out;
+}
+
+/* Define the neon line */
+.bg-neon-line {
+  background-color: #0313a4; /* Neon Blue */
+  width: 0;
+  height: 3px;
+  transition: width 0.3s ease-in-out;
+}
+
+/* Updated Gradient Background with black and blue blend */
+.bg-gradient-to-r {
+  background: linear-gradient(45deg, rgba(0, 0, 0, 1) 0%, rgba(21, 101, 192, 0.9) 50%, rgba(0, 0, 139, 0.8) 100%);
+}
+
+/* Hero Section - Adjust text alignment and padding */
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.lg\:text-left {
+  text-align: left;
+}
+
+.lg\:mr-10 {
+  margin-right: 4.5rem; /* Increase right padding for the truck image */
+}
+
+.lg\:flex-row {
+  flex-direction: row;
+}
+
+.lg\:justify-between {
+  justify-content: space-between;
+}
+
+/* Removed shadow and rounded corners from the truck image */
+img {
+  box-shadow: none;
+  border-radius: 0;
+}
+
+/* Button Styling */
+.cta-button {
+  background-color: #0313a4; /* Neon Blue */
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.cta-button:hover {
+  background-color: #04a9f8; /* Lighter blue on hover */
+  transform: translateY(-3px); /* Small upward movement on hover */
+}
+
+.cta-button:focus {
+  outline: none;
+}
+
+/* CTA Button Styling */
+.cta-button {
+  background: linear-gradient(45deg, #3b82f6, #9333ea);
+  padding: 16px 32px;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.cta-button:hover {
+  background: linear-gradient(45deg, #9333ea, #3b82f6);
+  transform: scale(1.05);
+}
+
+/* Service Card Styling */
+.service-card {
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+/* Animations for Scroll Effects */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes zoom-in {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Apply Animations to Sections */
+.fade-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.fade-section.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.slide-in-left.fade-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(100px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.slide-in-right.fade-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.zoom-in {
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.zoom-in.fade-in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Hero Section Animation */
+.animate-bounce-in {
+  animation: bounce-in 1s ease-out;
+}
+
+@keyframes bounce-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Service Card Hover Effect */
+.service-card:hover {
+  transform: scale(1.05);
+  background: #0073e6; /* Change to a brighter blue on hover */
+}
+
+/* Contact Form Animation */
+/* Contact Form Styling */
+form.animate-fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+form.animate-fade-in.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Input and Textarea Styling */
+input,
+textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  border: 2px solid #3b82f6; /* Neon Blue Border */
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent White */
+  color: white;
+  font-size: 16px;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(255, 255, 255, 0.7); /* Light Gray Placeholder */
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #9333ea; /* Purple Border on Focus */
+  background-color: rgba(255, 255, 255, 0.2); /* Slightly Brighter Background on Focus */
+}
+
+/* Button Styling */
+.cta-button {
+  background: linear-gradient(45deg, #3b82f6, #9333ea);
+  padding: 16px 32px;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.cta-button:hover {
+  background: linear-gradient(45deg, #9333ea, #3b82f6);
+  transform: scale(1.05);
+}
+
+/* Footer Background Adjustment */
+footer {
+  background: rgba(0, 0, 0, 0.9); /* Slightly Transparent Black */
+  padding: 40px 20px;
+}
+
+/* Add to your existing CSS */
+
+/* Scroll Arrow Animation */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(0deg);
+  }
+}
+
+.animate-bounce {
+  animation: bounce 2s infinite;
+}
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Container for scroll arrows */
+.scroll-arrow-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+/* Hover effect for scroll arrows */
+.scroll-arrow-container:hover .scroll-arrow {
+  opacity: 1;
+  transform: scale(1.1) rotate(45deg);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .scroll-arrow-container {
+    padding: 1rem 0;
+  }
+}

@@ -1,0 +1,145 @@
+/* Dashboard Styles */
+.dashboard-container {
+  background: linear-gradient(
+    135deg,
+    #0b0b0b 0%,
+    #004d00 50%,
+    #006400 75%,
+    #004d00 85%,
+    #0b0b0b 100%
+  );
+  color: rgba(230, 255, 230, 0.87);
+  font-family: "Jacques Francois", serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.subtitle {
+  color: #aaa;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.card {
+  background-color: #333;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.card-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffd24c;
+}
+
+.card-description {
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.chart-container {
+  background-color: #333;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.chart-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.recent-entries {
+  background-color: #333;
+  border-radius: 8px;
+  padding: 2rem;
+  width: 100%;
+}
+
+.section-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #444;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.entry-type {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.entry-date {
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+.entry-quantity {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffd24c;
+}
+
+.add-entry-button {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: #ffd24c;
+  color: #333;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.add-entry-button:hover {
+  background-color: #ffb84d;
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .pie-chart {
+    grid-column: span 2;
+  }
+}
