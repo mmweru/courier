@@ -8,6 +8,7 @@
     "server": "nodemon server/server.js",
     "dev:all": "concurrently \"npm run dev\" \"npm run server\"",
     "build": "vite build",
+    "start": "node server/server.js",
     "vercel-build": "vite build",
     "preview": "vite preview"
   },
@@ -49,6 +50,10 @@
     "react-helmet": "^6.1.0",
     "react-icons": "^5.4.0",
     "react-router-dom": "^7.1.1",
-    "request-promise": "^4.2.6"
+    "request-promise": "^4.2.6",
+    "ws": "^8.16.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
