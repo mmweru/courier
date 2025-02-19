@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: welzyne
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: node server/server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      - key: PORT
+        value: 7001
