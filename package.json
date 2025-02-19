@@ -7,10 +7,12 @@
     "dev": "vite",
     "server": "nodemon server/server.js",
     "dev:all": "concurrently \"npm run dev\" \"npm run server\"",
-    "build": "npm install --prefix ../src && npm run build --prefix ../src && npm install ", 
+    "build": "vite build",
     "start": "node server/server.js",
-    "vercel-build": "vite build",
-    "preview": "vite preview"
+    "heroku-postbuild": "npm run build"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   },
   "devDependencies": {
     "@vercel/node": "^5.1.7",
