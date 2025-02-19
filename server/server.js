@@ -96,7 +96,7 @@ const startServer = async () => {
     
     // Serve static files in production
     if (process.env.NODE_ENV === 'production') {
-      const distPath = path.join(__dirname, '../dist');
+      const distPath = path.join(__dirname, '../dist'); // Path to the frontend build folder
       
       // Serve static files with caching headers
       app.use(express.static(distPath, {
@@ -104,6 +104,7 @@ const startServer = async () => {
         etag: true
       }));
       
+      // Fallback to index.html for client-side routing
       app.get('*', (req, res) => {
         res.sendFile(path.join(distPath, 'index.html'));
       });
