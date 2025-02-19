@@ -55,27 +55,26 @@ const startServer = async () => {
     
     // Security middleware
     app.use(helmet({
-      contentSecurityPolicy: process.env.NODE_ENV === 'production' ? undefined : false
+      contentSecurityPolicy: process.env.NODE_ENV === 'production' ? {
+        directives: {
+          defaultSrc: ["'self'", process.env.FRONTEND_URL],
+          scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+          styleSrc: ["'self'", "'unsafe-inline'"],
+          imgSrc: ["'self'", "data:", "https://*"],
+          connectSrc: ["'self'", process.env.FRONTEND_URL],
+        }
+      } : false
     }));
     
     app.use(express.json());
     app.use(cookieParser());
     
-    // CORS configuration with more specific options
     app.use(cors({
-      origin: (origin, callback) => {
-        const allowedOrigins = [
-          process.env.FRONTEND_URL,
-          'http://localhost:5173',
-          // Add other allowed origins as needed
-        ];
-        
-        if (!origin || allowedOrigins.includes(origin)) {
-          callback(null, true);
-        } else {
-          callback(new Error('Not allowed by CORS'));
-        }
-      },
+      origin: [
+        process.env.FRONTEND_URL, // Your Vercel frontend URL
+        'https://courier-peach-kappa.vercel.app', // Explicitly allow your Vercel frontend
+        'http://localhost:5173', // For local development
+      ],
       credentials: true,
       methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
       allowedHeaders: ['Content-Type', 'Authorization']
@@ -89,6 +88,9 @@ const startServer = async () => {
     // Error handling middleware
     app.use((err, req, res, next) => {
       console.error(err.stack);
+      if (process.env.NODE_ENV === 'production') {
+        // Log errors to a file or external service
+      }
       res.status(err.status || 500).json({
         error: process.env.NODE_ENV === 'production' ? 'Internal server error' : err.message
       });
