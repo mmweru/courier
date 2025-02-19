@@ -108,7 +108,7 @@ const startServer = async () => {
       
       // Fallback to index.html for client-side routing
       app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, 'index.html'));
+        res.sendFile(path.join(__dirname, '../dist/index.html'));
       });
     }
     
