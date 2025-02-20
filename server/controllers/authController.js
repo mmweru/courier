@@ -117,10 +117,18 @@ export const login = async (req, res) => {
   };
 
 export const validateToken = async (req, res) => {
-    try {
-        const user = await User.findById(req.user.id).select('-password');
-        res.json(user);
-    } catch (err) {
-        res.status(500).json({ message: 'Server error', error: err.message });
-    }
+  try {
+      // Add select to exclude sensitive fields
+      const user = await User.findById(req.user.id)
+          .select('-password -__v');
+      
+      if (!user) {
+          return res.status(404).json({ message: 'User not found' });
+      }
+      
+      res.json(user);
+  } catch (err) {
+      console.error('Validate token error:', err);
+      res.status(500).json({ message: 'Server error', error: err.message });
+  }
 };

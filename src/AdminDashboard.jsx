@@ -46,7 +46,7 @@ const AdminDashboard = () => {
   // Fetch users
   const fetchUsers = useCallback(async () => {
     try {
-      const response = await axios.get(`${API_BASE_URL}/api/users`, {
+      const response = await axios.get(`${import.meta.env.BASE_URL}/users`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
@@ -62,7 +62,7 @@ const AdminDashboard = () => {
   // Fetch orders
   const fetchOrders = useCallback(async () => {
     try {
-      const response = await axios.get(`${API_BASE_URL}/api/orders`, {
+      const response = await axios.get(`${import.meta.env.BASE_URL}/orders`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
@@ -131,7 +131,7 @@ const AdminDashboard = () => {
   const handleStatusToggle = async (userId, currentStatus) => {
     try {
       const newStatus = currentStatus === 'Active' ? 'Inactive' : 'Active';
-      await axios.patch(`${API_BASE_URL}/api/users/${userId}/status`, {
+      await axios.patch(`${import.meta.env.BASE_URL}/users/${userId}/status`, {
         status: newStatus
       }, {
         headers: {
@@ -147,7 +147,7 @@ const AdminDashboard = () => {
   const handleDeleteUser = async (userId) => {
     if (window.confirm('Are you sure you want to delete this user?')) {
       try {
-        await axios.delete(`${API_BASE_URL}/api/users/${userId}`, {
+        await axios.delete(`${import.meta.env.BASE_URL}/users/${userId}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -162,7 +162,7 @@ const AdminDashboard = () => {
   const handleDeleteOrder = async (orderId) => {
     if (window.confirm('Are you sure you want to delete this order?')) {
       try {
-        await axios.delete(`${API_BASE_URL}/api/orders/${orderId}`, {
+        await axios.delete(`${import.meta.env.BASE_URL}/orders/${orderId}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -180,7 +180,7 @@ const AdminDashboard = () => {
     if (!editingOrder || !editingOrder.newStatus) return;
     
     try {
-      await axios.patch(`${API_BASE_URL}/api/orders/${editingOrder.id}/status`, {
+      await axios.patch(`${import.meta.env.BASE_URL}/orders/${editingOrder.id}/status`, {
         status: editingOrder.newStatus
       }, {
         headers: {
@@ -242,7 +242,7 @@ const AdminDashboard = () => {
       };
   
       // Send to server
-      const response = await axios.post(`${API_BASE_URL}/api/orders`, orderData, {
+      const response = await axios.post(`${import.meta.env.BASE_URL}/orders`, orderData, {
         headers: { 
           Authorization: `Bearer ${localStorage.getItem('token')}`,
           'Content-Type': 'application/json'
@@ -297,7 +297,7 @@ const startPaymentStatusCheck = async (checkoutRequestId, orderId) => {
   
   const checkStatus = async () => {
     try {
-      const response = await axios.post(`${API_BASE_URL}/api/mpesa/status`, {
+      const response = await axios.post(`${import.meta.env.BASE_URL}/mpesa/status`, {
         checkoutRequestId
       }, {
         headers: { 
@@ -515,7 +515,7 @@ const renderOrdersSection = () => (
                     onClick={async () => {
                       try {
                         if (window.confirm(`Resend STK push to ${order.mpesaNumber}?`)) {
-                          const response = await axios.post(`${API_BASE_URL}/api/mpesa/stkpush`, {
+                          const response = await axios.post(`${import.meta.env.BASE_URL}/mpesa/stkpush`, {
                             phoneNumber: order.mpesaNumber,
                             amount: order.amount,
                             orderId: order.id

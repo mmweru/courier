@@ -44,7 +44,7 @@ const UserDashboard = () => {
 
   const fetchUserOrders = async () => {
     try {
-      const response = await axios.get(`${API_BASE_URL}/api/orders/user/${user.email}`, {
+      const response = await axios.get(`${import.meta.env.BASE_URL}/orders/user/${user.email}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
       const userOrders = response.data;
