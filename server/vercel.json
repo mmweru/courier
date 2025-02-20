@@ -6,7 +6,7 @@
       "use": "@vercel/node@18"
     },
     {
-      "src": "server/dist/**",  // Updated path
+      "src": "server/dist/**", 
       "use": "@vercel/static"
     }
   ],
@@ -16,7 +16,7 @@
       "dest": "server/server.js"
     },
     {
-      "src": "/api/(.*)",  // Simplified API routes
+      "src": "/api/(.*)", 
       "dest": "server/server.js"
     },
     {
@@ -24,7 +24,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "server/dist/index.html"  // Updated path
+      "dest": "server/dist/index.html"
     }
   ],
   "env": {
