@@ -67,4 +67,11 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok' });
 });
 
+const PORT = process.env.PORT || 7001;
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
+
 export default app;

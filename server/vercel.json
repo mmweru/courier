@@ -3,10 +3,10 @@
   "builds": [
     {
       "src": "server/server.js",
-      "use": "@vercel/node"
+      "use": "@vercel/node@18"
     },
     {
-      "src": "dist/**",
+      "src": "server/dist/**",  // Updated path
       "use": "@vercel/static"
     }
   ],
@@ -16,15 +16,7 @@
       "dest": "server/server.js"
     },
     {
-      "src": "/api/auth/(.*)",
-      "dest": "server/server.js"
-    },
-    {
-      "src": "/api/users/(.*)",
-      "dest": "server/server.js"
-    },
-    {
-      "src": "/api/orders/(.*)",
+      "src": "/api/(.*)",  // Simplified API routes
       "dest": "server/server.js"
     },
     {
@@ -32,7 +24,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "dist/index.html"
+      "dest": "server/dist/index.html"  // Updated path
     }
   ],
   "env": {
